@@ -10,8 +10,8 @@
       'brand': '',
       'merchant': '',
       'url' : '/',
-      'listPrice' : 0.00,
-      'salePrice' : 0.00,
+      'listPrice' : '0.00',
+      'salePrice' : '0.00',
       'editorsPick' : false,
       'sale': false
     }
