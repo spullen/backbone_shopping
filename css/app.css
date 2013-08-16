@@ -1,0 +1,44 @@
+html, body {
+  padding-top: 15px;
+}
+
+.hide {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+.product {
+  width: 200px;
+  height: 350px;
+  margin: 10px;
+  float: left;
+}
+
+.product-image-container {
+  position: relative;
+  display: table;
+  z-index: 0;
+}
+
+.product-image-container .product-sale {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.product-image-container .product-editor {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.product-price .list-price-on-sale {
+  text-decoration: line-through;
+}
+
+.product-price .sale-price {
+  color: red;
+}
