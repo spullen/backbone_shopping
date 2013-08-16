@@ -31,6 +31,28 @@
     </div>
   </script>
 
+  <!-- 
+    alternate approach, no binding to specific attr change events
+    So in view render becomes this.$el.html(this.template(this.model.toJSON()));
+    And one listenTo in the initialize, this.listenTo(this.model, 'change', this.render);
+  -->
+  <script type="text/template" data-template-name="product-alt">
+    <div class="product-image-container">
+      <img class="product-image" src="<%= img %>">
+      <% if(sale) { %><img class="product-sale hide" src="img/icon_sale.png"><% } %>
+      <% if(editorsPick) %><img class="product-editor hide" src="img/icon_editor.png"><% } %>
+    </div>
+    <div class="product-information">
+      <div class="product-name"><%= name %></div>
+      <div><b class="product-brand"><%= brand %></b></div>
+      <div><i class="product-merchant"><%= merchant %></i></div>
+      <span class="product-price">
+        <span class="list-price <%= sale ? 'list-price-on-sale' : '' %>"><%= listPrice %></span>
+        <% if(sale) { %><span class="sale-price hide"><%= salePrice %></span><% } %>
+      </span>
+    </div>
+  </script>
+
   <script type="text/template" data-template-name="application">
     <div class="row">
       <div id="products" class="span10">Products</div>
