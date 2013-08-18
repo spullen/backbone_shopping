@@ -25,6 +25,14 @@
     }
   });
 
+  App.CartItem = Backbone.Model.extend({
+    defaults: {
+      quantity: 0,
+      total: 0.0,
+      product: null
+    }
+  });
+
   App.Cart = Backbone.Model.extend({
     url: '/cart.json',
 
