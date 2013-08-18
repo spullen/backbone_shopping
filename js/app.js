@@ -234,6 +234,15 @@
     }
   });
 
+  App.CartView = Backbone.View.extend({
+    template: _.template($('script[data-template-name="cart"]').html()),
+
+    render: function() {
+      this.$el.html(this.template());
+      return this;
+    }
+  });
+
   App.initialize = function() {
     new App.ApplicationView();
 
@@ -245,6 +254,9 @@
         var view = new App.ProductsListView({collection: App.products});
         $('#products').html(view.render().el);
       });
+
+    var cartView = new App.CartView({model: App.cart});
+    $('#cart').html(cartView.render().el);
   };
 
 })(this);
