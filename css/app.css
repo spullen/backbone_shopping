@@ -2,6 +2,14 @@ html, body {
   padding-top: 15px;
 }
 
+#products {
+  margin: 0;
+}
+
+#cart {
+  margin: 0;
+}
+
 .hide {
   margin: 0;
   padding: 0;

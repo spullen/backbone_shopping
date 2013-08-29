@@ -1,4 +1,4 @@
-(function(root) {
+(function(root, $, Backbone, undefined) {
   'use strict';
 
   root.App = {};
@@ -33,16 +33,26 @@
     }
   });
 
+  App.CartItems = Backbone.Model.extend({
+    model: App.CartItem
+  });
+
   App.Cart = Backbone.Model.extend({
     url: '/cart.json',
 
+    initialize: function() {
+      this.cartItems = new App.CartItems();
+      this.selectedShippingMethod = null;
+    },
+
     parse: function(response) {
-      var cartData = response.cart;
+      this.cartItems = new App.CartItems(response.cart.items);
 
-      this.set('items', new App.Products(cartData.items));
-      this.set('shipping_methods', cartData.shippingmethods);
+      var cartData = response.cart.totals;
 
-      return cartData.totals;
+      cartData.shipping_methods = response.cart.shippingmethods;
+      
+      return cartData;
     }
   });
 
@@ -255,10 +265,13 @@
         $('#products').html(view.render().el);
       });
 
-    var cartView = new App.CartView({model: App.cart});
-    $('#cart').html(cartView.render().el);
+    /*App.cart.fetch().
+      done(function() {
+        var cartView = new App.CartView({model: App.cart});
+        $('#cart').html(cartView.render().el);
+      });*/
   };
 
-})(this);
+})(this, jQuery, Backbone);
 
 $(function() { App.initialize(); });
