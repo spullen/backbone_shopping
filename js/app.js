@@ -275,3 +275,11 @@
 })(this, jQuery, Backbone);
 
 $(function() { App.initialize(); });
+
+function duplicate1() {
+  $('.product').on('click', function() { alert('Hello from product') });
+}
+
+function duplicate2() {
+  $('.product').on('click', function() { alert('Hello from product') });
+}
